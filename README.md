@@ -24,6 +24,9 @@ builder.addDropListField("Spinner Label", new String[]{"1", "2", "3"});
 formList.buildWith(builder);
 ```
 
+<img src="https://github.com/andersonkxiass/AndroidForm/blob/master/ViewLook/images/form_screen.png" width="350" heigth="350">
+
+
 **TODO:**
 
 * Add themes for each component
@@ -32,4 +35,5 @@ formList.buildWith(builder);
 * Create new form context
 * Create Date,InputText components.
 * Add components validations.
+* Add tests
 
