@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import br.com.involves.viewluck.R;
+import br.com.involves.viewluck.components.BuildType;
 import br.com.involves.viewluck.components.FormBuilder;
 
 /**
@@ -31,11 +32,17 @@ public class FormList extends RecyclerView.Adapter<FormViewHolder> {
 
     @Override
     public void onBindViewHolder(FormViewHolder holder, int position) {
-        //TODO fazer bind das views com os objetos do questionario
+        //TODO bind views with form objects
     }
 
     @Override
     public int getItemCount() {
-        return formBuilder.getFieldList().size();
+
+        if(formBuilder.getBuildType() == BuildType.QUESTIONS){
+            return 1;
+        }
+
+        //TODO add handle list question for template form context
+        return 20;
     }
 }

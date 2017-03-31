@@ -3,6 +3,7 @@ package br.com.involves.viewlook;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import br.com.involves.viewluck.components.BuildType;
 import br.com.involves.viewluck.components.FormBuilder;
 import br.com.involves.viewluck.view.FormView;
 

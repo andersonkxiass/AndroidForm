@@ -13,7 +13,8 @@ import br.com.involves.viewluck.model.ListField;
 
 public class FormBuilder {
 
-    List<BaseField> fieldList = new ArrayList<>();
+    private List<BaseField> fieldList = new ArrayList<>();
+    private BuildType buildType;
 
     public FormBuilder() {
     }
@@ -46,6 +47,11 @@ public class FormBuilder {
         return fieldList;
     }
 
-    public void setFormType(BuildType questions) {
+    public void setFormType(BuildType buildType) {
+        this.buildType = buildType;
+    }
+
+    public BuildType getBuildType() {
+        return buildType;
     }
 }
