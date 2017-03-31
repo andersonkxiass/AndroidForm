@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Viewluck</string>
+
+    <string-array name="foodTypes">
+        <item>Pasta</item>
+        <item>Pie</item>
+        <item>Pizza</item>
+        <item>Grill</item>
+        <item>Sea Food</item>
+        <item>Salads</item>
+        <item>Desserts</item>
+        <item>Quick Meals</item>
+    </string-array>
+</resources>
