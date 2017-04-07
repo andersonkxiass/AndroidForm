@@ -44,3 +44,4 @@ captures/
 #NDK
 obj/
 libs/
+/gradle/
