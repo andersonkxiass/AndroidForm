@@ -1,11 +1,9 @@
 package br.com.involves.viewluck.viewmodel;
 
-import android.databinding.BindingAdapter;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableField;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,8 +12,8 @@ import java.util.List;
 
 public class MultiChoiceViewModel extends BaseViewModel<List<String>> {
 
-    private ObservableArrayList<String> objectList = new ObservableArrayList<>();
-    private List<String> answer;
+    private final ObservableArrayList<String> objectList = new ObservableArrayList<>();
+    private final List<String> answer = new ArrayList<>();
     private final ObservableField<String> fieldLabel = new ObservableField<>("");
 
     @Override
@@ -38,18 +36,12 @@ public class MultiChoiceViewModel extends BaseViewModel<List<String>> {
         return objectList;
     }
 
+    public ObservableArrayList<String> getObjectList() {
+        return objectList;
+    }
+
     @Override
     public List<String> getAnswer() {
         return answer;
-    }
-
-    @BindingAdapter("options")
-    public static void addItems(GridView gridView, ObservableArrayList<String> objectList) {
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(gridView.getContext(),
-                android.R.layout.simple_list_item_multiple_choice);
-
-        gridView.setAdapter(adapter);
-        adapter.addAll(objectList);
     }
 }

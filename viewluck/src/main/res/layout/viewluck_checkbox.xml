@@ -5,6 +5,10 @@
         <variable
             name="vm"
             type="br.com.involves.viewluck.viewmodel.MultiChoiceViewModel"/>
+
+        <variable
+            name="adapter"
+            type="br.com.involves.viewluck.viewmodel.MultiChoiceAdapter"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -26,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:choiceMode="multipleChoice"
-            app:options="@{vm.getFieldValue()}"
+            app:options="@{vm.objectList}"
             android:numColumns="auto_fit" />
 
     </android.support.v7.widget.LinearLayoutCompat>
