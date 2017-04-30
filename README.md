@@ -1,9 +1,11 @@
 # AndroidForm
 Dynamic form builder
 
+NOTE: This project is under construction and has not yet been released. 
+
 **How to use:**
 
-```XML
+```xml
 <br.com.involves.viewluck.view.FormView
     android:id="@+id/form_id"
     android:layout_width="match_parent"
@@ -29,11 +31,8 @@ formList.buildWith(builder);
 
 **TODO:**
 
-* Add themes for each component
-* Add theme for a Layout Form
-* Save state form object
-* Create new form context
+* Theme for each component
+* Save form state.
 * Create Date,InputText components.
-* Add components validations.
-* Add tests
-
+* Components validation.
+* Tests.
