@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.List;
+
 import br.com.involves.viewluck.R;
 import br.com.involves.viewluck.components.FormBuilder;
 
@@ -35,5 +37,9 @@ public class FormView extends LinearLayoutCompat {
 
     public void buildWith(FormBuilder builder) {
         formList.setAdapter(new FormList(builder));
+    }
+
+    public List<Object> getAnswers(){
+        return null;
     }
 }

@@ -16,6 +16,7 @@ import br.com.involves.viewluck.components.FormBuilder;
 public class FormList extends RecyclerView.Adapter<FormViewHolder> {
 
     private FormBuilder formBuilder;
+    //fieldsAnswer
 
     public FormList(FormBuilder formBuilder) {
         this.formBuilder = formBuilder;

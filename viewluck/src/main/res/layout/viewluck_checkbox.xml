@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="2dp"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="vm"
+            type="br.com.involves.viewluck.viewmodel.MultiChoiceViewModel"/>
+    </data>
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/txt_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="My Label"
-        android:textSize="14sp"
-        android:textStyle="bold"/>
-
-    <br.com.involves.viewluck.view.NonScrollableGridView
-        android:id="@+id/gd_multiple_choice"
+    <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:choiceMode="multipleChoice"
-        android:numColumns="auto_fit" />
+        android:layout_margin="2dp"
+        android:orientation="vertical">
 
-</android.support.v7.widget.LinearLayoutCompat>
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/txt_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{vm.fieldLabel}"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <br.com.involves.viewluck.view.NonScrollableGridView
+            android:id="@+id/gd_multiple_choice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:choiceMode="multipleChoice"
+            app:options="@{vm.getFieldValue()}"
+            android:numColumns="auto_fit" />
+
+    </android.support.v7.widget.LinearLayoutCompat>
+</layout>
