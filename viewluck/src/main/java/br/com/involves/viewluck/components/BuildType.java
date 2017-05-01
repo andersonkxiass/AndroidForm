@@ -5,5 +5,5 @@ package br.com.involves.viewluck.components;
  */
 
 public enum BuildType {
-    QUESTIONS
+    SINGLE, MULTI
 }

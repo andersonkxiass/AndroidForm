@@ -39,7 +39,7 @@ public class FormList extends RecyclerView.Adapter<FormViewHolder> {
     @Override
     public int getItemCount() {
 
-        if(formBuilder.getBuildType() == BuildType.QUESTIONS){
+        if(formBuilder.getBuildType() == BuildType.SINGLE){
             return 1;
         }
 
