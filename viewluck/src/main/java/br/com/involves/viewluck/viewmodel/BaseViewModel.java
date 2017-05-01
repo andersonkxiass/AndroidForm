@@ -7,7 +7,9 @@ import android.databinding.ObservableField;
  * Created by andersonk on 30/04/17.
  */
 
-public abstract class BaseViewModel <T> extends BaseObservable{
+public abstract class BaseViewModel <T, M> extends BaseObservable{
+
+    protected M model;
 
     public abstract void setFieldValue(T content);
     public abstract void setFieldLabel(String fieldLabel);

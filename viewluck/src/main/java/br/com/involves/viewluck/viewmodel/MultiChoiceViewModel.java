@@ -7,16 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.involves.viewluck.model.FieldOption;
+import br.com.involves.viewluck.model.FormModelMulti;
 
 /**
  * Created by andersonk on 30/04/17.
  */
 
-public class MultiChoiceViewModel extends BaseViewModel<List<String>> {
+public class MultiChoiceViewModel extends BaseViewModel<List<String>, FormModelMulti> {
 
+    //private FormModelMulti model;
     private final ObservableArrayList<String> objectList = new ObservableArrayList<>();
     private final List<FieldOption> answer = new ArrayList<>();
     private final ObservableField<String> fieldLabel = new ObservableField<>("");
+
+    public MultiChoiceViewModel() {
+    }
 
     @Override
     public void setFieldValue(List<String> content) {
@@ -53,5 +58,13 @@ public class MultiChoiceViewModel extends BaseViewModel<List<String>> {
 
     public void setAnswer(List<FieldOption> answer){
         this.answer.addAll(answer);
+    }
+
+    public FormModelMulti getModel() {
+        return model;
+    }
+
+    public void setModel(FormModelMulti model) {
+        this.model = model;
     }
 }

@@ -19,6 +19,7 @@ import br.com.involves.viewluck.model.ListField;
 public class Form extends LinearLayoutCompat {
 
     private List<View> components = new ArrayList<>();
+    private FormBuilder formBuilder;
 
     public Form(Context context) {
         super(context);
@@ -84,5 +85,14 @@ public class Form extends LinearLayoutCompat {
 
     public List<View> getComponents() {
         return components;
+    }
+
+    public FormBuilder getFormBuilder() {
+        return formBuilder;
+    }
+
+    public void setFormBuilder(FormBuilder formBuilder) {
+        this.formBuilder = formBuilder;
+        addBuilder(formBuilder);
     }
 }
