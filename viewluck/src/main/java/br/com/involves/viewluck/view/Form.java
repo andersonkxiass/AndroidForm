@@ -8,6 +8,7 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.involves.viewluck.components.CreateComponents;
 import br.com.involves.viewluck.components.FormBuilder;
 import br.com.involves.viewluck.model.BaseField;
 import br.com.involves.viewluck.components.FormType;
@@ -20,15 +21,22 @@ public class Form extends LinearLayoutCompat {
 
     private List<View> components = new ArrayList<>();
     private FormBuilder formBuilder;
+    private CreateComponents createComponents;
 
     public Form(Context context) {
         super(context);
         setOrientation(VERTICAL);
+        init();
     }
 
     public Form(Context context, AttributeSet attrs) {
         super(context, attrs);
         setOrientation(VERTICAL);
+        init();
+    }
+
+    private void init(){
+        createComponents = new CreateComponents(this);
     }
 
     public void addBuilder(FormBuilder formBuilder) {
@@ -46,25 +54,13 @@ public class Form extends LinearLayoutCompat {
     }
 
     private void addMultipleChoiceView(String label, List<String> items) {
-
-        ViewLuckMultipleChoice multipleChoice = new ViewLuckMultipleChoice(getContext());
-        multipleChoice.setLabel(label);
-        multipleChoice.populateAdapter(items);
-
-        addView(multipleChoice);
-
+        ViewLuckMultipleChoice multipleChoice = createComponents.createMultipleChoiceView(label, items);
         components.add(multipleChoice);
     }
 
     private void addSingleChoiceView(String label, List<String> items) {
-
-        ViewLuckRadioGroup radioGroup = new ViewLuckRadioGroup(getContext());
-        radioGroup.setLabel(label);
-        radioGroup.populateItems(items);
-
+        ViewLuckRadioGroup radioGroup = createComponents.createSingleChoiceView(label, items);
         components.add(radioGroup);
-
-        addView(radioGroup);
     }
 
     private void addInputTextView() {
@@ -74,13 +70,8 @@ public class Form extends LinearLayoutCompat {
     }
 
     private void addSpinnerView(String label, List<String> items) {
-        ViewLuckSpinner spinner = new ViewLuckSpinner(getContext());
-        spinner.setLabel(label);
-        spinner.populateItems(items);
-
+        ViewLuckSpinner spinner = createComponents.createSpinnerView(label, items);
         components.add(spinner);
-
-        addView(spinner);
     }
 
     public List<View> getComponents() {
