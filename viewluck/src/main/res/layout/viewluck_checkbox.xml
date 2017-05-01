@@ -9,6 +9,10 @@
         <variable
             name="adapter"
             type="br.com.involves.viewluck.viewmodel.MultiChoiceAdapter"/>
+
+        <variable
+            name="actions"
+            type="br.com.involves.viewluck.viewmodel.MultiChoiceActions"/>
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -31,6 +35,7 @@
             android:layout_height="match_parent"
             android:choiceMode="multipleChoice"
             app:options="@{vm.objectList}"
+            app:OnItemClickListener="@{(parent, view, position,id)->actions.onItemClick(view, position, vm.answer)}"
             android:numColumns="auto_fit" />
 
     </android.support.v7.widget.LinearLayoutCompat>

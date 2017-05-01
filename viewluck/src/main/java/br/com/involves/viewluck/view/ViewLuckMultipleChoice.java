@@ -10,6 +10,8 @@ import java.util.List;
 
 import br.com.involves.viewluck.R;
 import br.com.involves.viewluck.databinding.ViewluckCheckboxBinding;
+import br.com.involves.viewluck.viewmodel.MultiChoiceActions;
+import br.com.involves.viewluck.viewmodel.MultiChoiceAdapter;
 import br.com.involves.viewluck.viewmodel.MultiChoiceViewModel;
 
 /**
@@ -32,16 +34,13 @@ public class ViewLuckMultipleChoice extends LinearLayoutCompat {
     private void init(Context context) {
 
         viewModel = new MultiChoiceViewModel();
+        MultiChoiceActions actions = new MultiChoiceActions();
+        MultiChoiceAdapter adapter = new MultiChoiceAdapter();
 
-        ViewluckCheckboxBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.viewluck_checkbox,this, true);
+        ViewluckCheckboxBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.viewluck_checkbox, this, true);
         binding.setVm(viewModel);
-
-//        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Toast.makeText(getContext(), "Position " + position + " Clicked!", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        binding.setActions(actions);
+        binding.setAdapter(adapter);
     }
 
     public void setLabel(String label) {

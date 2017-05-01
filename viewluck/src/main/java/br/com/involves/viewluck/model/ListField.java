@@ -9,7 +9,7 @@ import br.com.involves.viewluck.components.FormType;
  * Created by andersonk on 29/03/17.
  */
 
-public class ListField extends BaseField{
+public class ListField extends BaseField {
 
     List<String> options = new ArrayList<>();
 

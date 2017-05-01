@@ -13,5 +13,4 @@ public abstract class BaseViewModel <T> extends BaseObservable{
     public abstract void setFieldLabel(String fieldLabel);
     public abstract ObservableField getFieldLabel();
     public abstract T getFieldValue();
-    public abstract T getAnswer();
 }

@@ -6,6 +6,8 @@ import android.databinding.ObservableField;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.involves.viewluck.model.FieldOption;
+
 /**
  * Created by andersonk on 30/04/17.
  */
@@ -13,11 +15,16 @@ import java.util.List;
 public class MultiChoiceViewModel extends BaseViewModel<List<String>> {
 
     private final ObservableArrayList<String> objectList = new ObservableArrayList<>();
-    private final List<String> answer = new ArrayList<>();
+    private final List<FieldOption> answer = new ArrayList<>();
     private final ObservableField<String> fieldLabel = new ObservableField<>("");
 
     @Override
     public void setFieldValue(List<String> content) {
+
+        for(String opt : content){
+            answer.add(new FieldOption(opt, false));
+        }
+
         this.objectList.addAll(content);
     }
 
@@ -40,8 +47,11 @@ public class MultiChoiceViewModel extends BaseViewModel<List<String>> {
         return objectList;
     }
 
-    @Override
-    public List<String> getAnswer() {
+    public List<FieldOption> getAnswer() {
         return answer;
+    }
+
+    public void setAnswer(List<FieldOption> answer){
+        this.answer.addAll(answer);
     }
 }
