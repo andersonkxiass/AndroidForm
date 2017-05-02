@@ -10,6 +10,7 @@ import android.view.View;
 import java.util.List;
 
 import br.com.involves.viewluck.R;
+import br.com.involves.viewluck.components.BuildType;
 import br.com.involves.viewluck.components.FormBuilder;
 
 /**
@@ -17,7 +18,8 @@ import br.com.involves.viewluck.components.FormBuilder;
  */
 
 public class FormView extends LinearLayoutCompat {
-    private RecyclerView formList;
+    private RecyclerView recyclerView;
+    private FormAdapter fomAdapter;
 
     public FormView(Context context) {
         super(context);
@@ -30,13 +32,23 @@ public class FormView extends LinearLayoutCompat {
     }
 
     private void init(Context context) {
+
         View rootView = inflate(context, R.layout.form, this);
-        formList = (RecyclerView) rootView.findViewById(R.id.formList);
-        formList.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.formList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     public void buildWith(FormBuilder builder) {
-        formList.setAdapter(new FormList(builder));
+
+        fomAdapter = new FormAdapter(builder);
+        recyclerView.setAdapter(fomAdapter);
+
+        if(builder.getBuildType() == BuildType.MULTI) {
+
+            if(builder.getObjectList() != null) {
+                fomAdapter.addObjectList(builder.getObjectList());
+            }
+        }
     }
 
     public List<Object> getAnswers(){

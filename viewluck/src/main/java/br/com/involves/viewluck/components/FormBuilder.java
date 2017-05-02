@@ -18,7 +18,8 @@ public class FormBuilder {
 
     private List<FormModel> formModels = new ArrayList<>();
     private List<BaseField> fieldList = new ArrayList<>();
-    private BuildType buildType;
+    private BuildType buildType = BuildType.SINGLE;
+    private List<Object> objectList = new ArrayList<>();
 
     public FormBuilder() {
     }
@@ -65,5 +66,13 @@ public class FormBuilder {
 
     public BuildType getBuildType() {
         return buildType;
+    }
+
+    public void forObjectList(List<Object> objectList) {
+        this.objectList = objectList;
+    }
+
+    public List<Object> getObjectList() {
+        return objectList;
     }
 }

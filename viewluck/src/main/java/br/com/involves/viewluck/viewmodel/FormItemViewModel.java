@@ -14,6 +14,10 @@ public class FormItemViewModel extends BaseObservable{
     private FormModel formModel;
     private FormBuilder formBuilder;
 
+    public FormItemViewModel(FormBuilder formBuilder) {
+        this.formBuilder = formBuilder;
+    }
+
     public FormItemViewModel(FormModel formModel, FormBuilder formBuilder) {
         this.formModel = formModel;
         this.formBuilder = formBuilder;

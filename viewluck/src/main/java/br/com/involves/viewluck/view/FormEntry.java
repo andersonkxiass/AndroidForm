@@ -17,19 +17,19 @@ import br.com.involves.viewluck.model.ListField;
 /**
  * Created by andersonk on 16/03/17.
  */
-public class Form extends LinearLayoutCompat {
+public class FormEntry extends LinearLayoutCompat {
 
     private List<View> components = new ArrayList<>();
     private FormBuilder formBuilder;
     private CreateComponents createComponents;
 
-    public Form(Context context) {
+    public FormEntry(Context context) {
         super(context);
         setOrientation(VERTICAL);
         init();
     }
 
-    public Form(Context context, AttributeSet attrs) {
+    public FormEntry(Context context, AttributeSet attrs) {
         super(context, attrs);
         setOrientation(VERTICAL);
         init();
@@ -41,14 +41,17 @@ public class Form extends LinearLayoutCompat {
 
     public void addBuilder(FormBuilder formBuilder) {
 
-        for (BaseField field : formBuilder.getFieldList()) {
+        if(formBuilder != null) {
 
-            if(field.getFormType() == FormType.MULTIPLE_CHOICE){
-                addMultipleChoiceView(field.getLabel(), ((ListField)field).getOptions());
-            }else if(field.getFormType() == FormType.SINGLE_CHOICE){
-                addSingleChoiceView(field.getLabel(), ((ListField)field).getOptions());
-            }else if(field.getFormType() == FormType.SPINNER){
-                addSpinnerView(field.getLabel(), ((ListField)field).getOptions());
+            for (BaseField field : formBuilder.getFieldList()) {
+
+                if (field.getFormType() == FormType.MULTIPLE_CHOICE) {
+                    addMultipleChoiceView(field.getLabel(), ((ListField) field).getOptions());
+                } else if (field.getFormType() == FormType.SINGLE_CHOICE) {
+                    addSingleChoiceView(field.getLabel(), ((ListField) field).getOptions());
+                } else if (field.getFormType() == FormType.SPINNER) {
+                    addSpinnerView(field.getLabel(), ((ListField) field).getOptions());
+                }
             }
         }
     }

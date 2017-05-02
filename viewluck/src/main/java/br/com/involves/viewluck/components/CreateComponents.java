@@ -2,7 +2,7 @@ package br.com.involves.viewluck.components;
 
 import java.util.List;
 
-import br.com.involves.viewluck.view.Form;
+import br.com.involves.viewluck.view.FormEntry;
 import br.com.involves.viewluck.view.ViewLuckMultipleChoice;
 import br.com.involves.viewluck.view.ViewLuckRadioGroup;
 import br.com.involves.viewluck.view.ViewLuckSpinner;
@@ -13,9 +13,9 @@ import br.com.involves.viewluck.view.ViewLuckSpinner;
 
 public class CreateComponents {
 
-    private Form rootView;
+    private FormEntry rootView;
 
-    public CreateComponents(Form rootView) {
+    public CreateComponents(FormEntry rootView) {
         this.rootView = rootView;
     }
 

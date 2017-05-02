@@ -18,6 +18,6 @@ public class MultiChoiceActions {
         boolean currentValue = objectList.get(position).isChecked();
         objectList.get(position).setChecked(!currentValue);
 
-        Toast.makeText(view.getContext(), "!currentValue " + (!currentValue) , Toast.LENGTH_SHORT).show();
+        //Toast.makeText(view.getContext(), "!currentValue " + (!currentValue) , Toast.LENGTH_SHORT).show();
     }
 }
