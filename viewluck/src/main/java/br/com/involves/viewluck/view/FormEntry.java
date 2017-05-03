@@ -7,21 +7,25 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import br.com.involves.viewluck.components.CreateComponents;
+import br.com.involves.viewluck.components.FieldCheckBox;
+import br.com.involves.viewluck.components.FieldRadioButton;
+import br.com.involves.viewluck.components.FieldSpinner;
+import br.com.involves.viewluck.components.FieldType;
+import br.com.involves.viewluck.components.FieldView;
 import br.com.involves.viewluck.components.FormBuilder;
-import br.com.involves.viewluck.model.BaseField;
-import br.com.involves.viewluck.components.FormType;
-import br.com.involves.viewluck.model.ListField;
 
 /**
  * Created by andersonk on 16/03/17.
  */
 public class FormEntry extends LinearLayoutCompat {
 
-    private List<View> components = new ArrayList<>();
+    private List<ViewLuck> components = new ArrayList<>();
     private FormBuilder formBuilder;
     private CreateComponents createComponents;
+    private List<FieldView> data = new ArrayList<>();
 
     public FormEntry(Context context) {
         super(context);
@@ -35,35 +39,33 @@ public class FormEntry extends LinearLayoutCompat {
         init();
     }
 
-    private void init(){
+    private void init() {
         createComponents = new CreateComponents(this);
     }
 
     public void addBuilder(FormBuilder formBuilder) {
 
-        if(formBuilder != null) {
+        if (formBuilder != null) {
 
-            for (BaseField field : formBuilder.getFieldList()) {
+            for (FieldView field : formBuilder.getFormEntries()) {
 
-                if (field.getFormType() == FormType.MULTIPLE_CHOICE) {
-                    addMultipleChoiceView(field.getLabel(), ((ListField) field).getOptions());
-                } else if (field.getFormType() == FormType.SINGLE_CHOICE) {
-                    addSingleChoiceView(field.getLabel(), ((ListField) field).getOptions());
-                } else if (field.getFormType() == FormType.SPINNER) {
-                    addSpinnerView(field.getLabel(), ((ListField) field).getOptions());
+                if (field.getFieldType() == FieldType.MULTIPLE_CHOICE) {
+
+                    ViewLuckMultipleChoice multipleChoice = createComponents.createMultipleChoiceView((FieldCheckBox) field);
+                    components.add(multipleChoice);
+
+                } else if (field.getFieldType() == FieldType.SINGLE_CHOICE) {
+
+                    ViewLuckRadioGroup radioGroup = createComponents.createSingleChoiceView((FieldRadioButton) field);
+                    components.add(radioGroup);
+
+                } else if (field.getFieldType() == FieldType.SPINNER) {
+
+                    ViewLuckSpinner spinner = createComponents.createSpinnerView((FieldSpinner) field);
+                    components.add(spinner);
                 }
             }
         }
-    }
-
-    private void addMultipleChoiceView(String label, List<String> items) {
-        ViewLuckMultipleChoice multipleChoice = createComponents.createMultipleChoiceView(label, items);
-        components.add(multipleChoice);
-    }
-
-    private void addSingleChoiceView(String label, List<String> items) {
-        ViewLuckRadioGroup radioGroup = createComponents.createSingleChoiceView(label, items);
-        components.add(radioGroup);
     }
 
     private void addInputTextView() {
@@ -72,12 +74,7 @@ public class FormEntry extends LinearLayoutCompat {
     private void addDateView() {
     }
 
-    private void addSpinnerView(String label, List<String> items) {
-        ViewLuckSpinner spinner = createComponents.createSpinnerView(label, items);
-        components.add(spinner);
-    }
-
-    public List<View> getComponents() {
+    public List<ViewLuck> getComponents() {
         return components;
     }
 
@@ -88,5 +85,57 @@ public class FormEntry extends LinearLayoutCompat {
     public void setFormBuilder(FormBuilder formBuilder) {
         this.formBuilder = formBuilder;
         addBuilder(formBuilder);
+    }
+
+    public FieldView getComponentDataByTagId(UUID tagId) {
+
+        for (ViewLuck view : components) {
+            boolean result = ((View) view).getTag().equals(tagId);
+
+            if (result) {
+                return (FieldView) view.getModel();
+            }
+        }
+
+        return null;
+    }
+
+    public View findComponentByTagId(UUID tagId) {
+
+        for (ViewLuck view : components) {
+            boolean result = ((View) view).getTag().equals(tagId);
+
+            if (result) {
+                return (View) view;
+            }
+        }
+
+        return null;
+    }
+
+    public List<FieldView> getData() {
+        return data;
+    }
+
+    public void setData(List<FieldView> data) {
+        this.data = data;
+
+        for (FieldView fieldView : data) {
+
+            View component = findComponentByTagId(fieldView.getTagId());
+
+            if (component instanceof ViewLuckMultipleChoice) {
+                ViewLuckMultipleChoice multipleChoice = (ViewLuckMultipleChoice) component;
+                multipleChoice.setModel((FieldCheckBox) fieldView);
+
+            } else if (component instanceof ViewLuckRadioGroup) {
+                ViewLuckRadioGroup singleChoice = (ViewLuckRadioGroup) component;
+                singleChoice.setModel((FieldRadioButton) fieldView);
+
+            } else if (component instanceof ViewLuckSpinner) {
+                ViewLuckSpinner spinner = (ViewLuckSpinner) component;
+                spinner.setModel((FieldSpinner) fieldView);
+            }
+        }
     }
 }

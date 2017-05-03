@@ -3,61 +3,58 @@ package br.com.involves.viewluck.components;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import br.com.involves.viewluck.model.BaseField;
-import br.com.involves.viewluck.model.FormModel;
-import br.com.involves.viewluck.model.FormModelMulti;
-import br.com.involves.viewluck.model.FormModelSimple;
-import br.com.involves.viewluck.model.ListField;
+import java.util.UUID;
 
 /**
  * Created by andersonk on 29/03/17.
  */
-
 public class FormBuilder {
 
-    private List<FormModel> formModels = new ArrayList<>();
-    private List<BaseField> fieldList = new ArrayList<>();
+    private List<FieldView> formEntries = new ArrayList<>();
     private BuildType buildType = BuildType.SINGLE;
     private List<Object> objectList = new ArrayList<>();
 
     public FormBuilder() {
     }
 
-    public void addInputTextField(String label) {
-        fieldList.add(new BaseField(FormType.INPUT_TEXT, label));
-        formModels.add(new FormModelSimple());
-    }
-
     public void addMultiChoiceField(String label, String[] options) {
-        fieldList.add(new ListField(FormType.MULTIPLE_CHOICE, label, Arrays.asList(options)));
-        formModels.add(new FormModelMulti());
+
+        FieldCheckBox fieldCheckBox = new FieldCheckBox();
+        fieldCheckBox.setTagId(UUID.randomUUID());
+        fieldCheckBox.setLabel(label);
+        fieldCheckBox.setValue(Arrays.asList(options));
+
+        formEntries.add(fieldCheckBox);
     }
 
     public void addSingleChoiceField(String label, String[] options) {
-        fieldList.add(new ListField(FormType.SINGLE_CHOICE, label, Arrays.asList(options)));
-        formModels.add(new FormModelSimple());
-    }
 
-    public void addAttachFileField(String label) {
+        FieldRadioButton fieldRadioButton = new FieldRadioButton();
+        fieldRadioButton.setTagId(UUID.randomUUID());
+        fieldRadioButton.setLabel(label);
+        fieldRadioButton.setValue(Arrays.asList(options));
 
-    }
-
-    public void addDateField(String label) {
-
+        formEntries.add(fieldRadioButton);
     }
 
     public void addDropListField(String label, String[] options) {
-        fieldList.add(new ListField(FormType.SPINNER, label, Arrays.asList(options)));
-        formModels.add(new FormModelSimple());
+
+        FieldSpinner fieldSpinner = new FieldSpinner();
+        fieldSpinner.setTagId(UUID.randomUUID());
+        fieldSpinner.setLabel(label);
+        fieldSpinner.setValue(Arrays.asList(options));
+
+        formEntries.add(fieldSpinner);
     }
 
-    public List<FormModel> getFormModels() {
-        return formModels;
+    public void addAttachFileField(String label) {
     }
 
-    public List<BaseField> getFieldList() {
-        return fieldList;
+    public void addDateField(String label) {
+    }
+
+    public void addInputTextField(String label) {
+        //formEntries.put(new BaseField(FormType.INPUT_TEXT, label), new FormModelSimple());
     }
 
     public void setFormType(BuildType buildType) {
@@ -72,7 +69,20 @@ public class FormBuilder {
         this.objectList = objectList;
     }
 
-    public List<Object> getObjectList() {
-        return objectList;
+    public int formLength() {
+
+        if (buildType == BuildType.SINGLE) {
+            return 1;
+        } else {
+            return objectList.size();
+        }
+    }
+
+    public List<FieldView> getFormEntries() {
+        return formEntries;
+    }
+
+    public void setFormEntries(List<FieldView> formEntries) {
+        this.formEntries = formEntries;
     }
 }

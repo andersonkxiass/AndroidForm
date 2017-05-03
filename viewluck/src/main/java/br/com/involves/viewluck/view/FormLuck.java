@@ -10,23 +10,21 @@ import android.view.View;
 import java.util.List;
 
 import br.com.involves.viewluck.R;
-import br.com.involves.viewluck.components.BuildType;
 import br.com.involves.viewluck.components.FormBuilder;
 
 /**
  * Created by andersonk on 29/03/17.
  */
-
-public class FormView extends LinearLayoutCompat {
+public class FormLuck extends LinearLayoutCompat {
     private RecyclerView recyclerView;
     private FormAdapter fomAdapter;
 
-    public FormView(Context context) {
+    public FormLuck(Context context) {
         super(context);
         init(context);
     }
 
-    public FormView(Context context, AttributeSet attrs) {
+    public FormLuck(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
@@ -39,19 +37,7 @@ public class FormView extends LinearLayoutCompat {
     }
 
     public void buildWith(FormBuilder builder) {
-
         fomAdapter = new FormAdapter(builder);
         recyclerView.setAdapter(fomAdapter);
-
-        if(builder.getBuildType() == BuildType.MULTI) {
-
-            if(builder.getObjectList() != null) {
-                fomAdapter.addObjectList(builder.getObjectList());
-            }
-        }
-    }
-
-    public List<Object> getAnswers(){
-        return null;
     }
 }

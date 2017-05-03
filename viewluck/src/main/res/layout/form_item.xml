@@ -12,5 +12,6 @@
         android:id="@+id/form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:FormBuilder="@{vm.getFormBuilder}"/>
+        app:FormBuilder="@{vm.getFormBuilder}"
+        app:Data="@{vm.getFormModel() }"/>
 </layout>

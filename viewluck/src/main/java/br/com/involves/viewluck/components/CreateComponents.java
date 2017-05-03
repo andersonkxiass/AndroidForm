@@ -1,7 +1,5 @@
 package br.com.involves.viewluck.components;
 
-import java.util.List;
-
 import br.com.involves.viewluck.view.FormEntry;
 import br.com.involves.viewluck.view.ViewLuckMultipleChoice;
 import br.com.involves.viewluck.view.ViewLuckRadioGroup;
@@ -19,41 +17,38 @@ public class CreateComponents {
         this.rootView = rootView;
     }
 
-    public ViewLuckMultipleChoice createMultipleChoiceView(String label, List<String> items) {
+    public ViewLuckMultipleChoice createMultipleChoiceView(FieldCheckBox fieldCheckBox) {
 
         ViewLuckMultipleChoice multipleChoice = new ViewLuckMultipleChoice(rootView.getContext());
-        multipleChoice.setLabel(label);
-        multipleChoice.populateAdapter(items);
-
+        multipleChoice.setTag(fieldCheckBox.getTagId());
+        multipleChoice.setModel(fieldCheckBox);
         rootView.addView(multipleChoice);
 
         return multipleChoice;
     }
 
-    public ViewLuckRadioGroup createSingleChoiceView(String label, List<String> items) {
+    public ViewLuckRadioGroup createSingleChoiceView(FieldRadioButton fieldRadioButton) {
 
         ViewLuckRadioGroup radioGroup = new ViewLuckRadioGroup(rootView.getContext());
-        radioGroup.setLabel(label);
-        radioGroup.populateItems(items);
-
+        radioGroup.setTag(fieldRadioButton.getTagId());
+        radioGroup.setModel(fieldRadioButton);
         rootView.addView(radioGroup);
 
         return radioGroup;
+    }
+
+    public ViewLuckSpinner createSpinnerView(FieldSpinner fieldSpinner) {
+        ViewLuckSpinner spinner = new ViewLuckSpinner(rootView.getContext());
+        spinner.setTag(fieldSpinner.getTagId());
+        spinner.setModel(fieldSpinner);
+        rootView.addView(spinner);
+
+        return spinner;
     }
 
     public void createInputTextView() {
     }
 
     public void createDateView() {
-    }
-
-    public ViewLuckSpinner createSpinnerView(String label, List<String> items) {
-        ViewLuckSpinner spinner = new ViewLuckSpinner(rootView.getContext());
-        spinner.setLabel(label);
-        spinner.populateItems(items);
-
-        rootView.addView(spinner);
-
-        return spinner;
     }
 }

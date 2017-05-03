@@ -5,6 +5,6 @@ package br.com.involves.viewluck.view
  */
 interface ViewLuck<T> {
 
-    var data: T
+    var model: T
 
 }

@@ -11,12 +11,4 @@ public abstract class ViewLuckTextView extends AppCompatTextView implements View
     public ViewLuckTextView(Context context) {
         super(context);
     }
-
-    @Override
-    public void setData(Object object) {}
-
-    @Override
-    public Object getData() {
-        return null;
-    }
 }

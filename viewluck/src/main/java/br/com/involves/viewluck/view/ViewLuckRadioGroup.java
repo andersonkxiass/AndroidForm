@@ -8,21 +8,22 @@ import android.support.v7.widget.LinearLayoutCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import java.util.List;
 
 import br.com.involves.viewluck.R;
+import br.com.involves.viewluck.components.FieldRadioButton;
 
 /**
  * Created by andersonk on 16/03/17.
  */
 
-public class ViewLuckRadioGroup extends LinearLayoutCompat {
+public class ViewLuckRadioGroup extends LinearLayoutCompat implements ViewLuck<FieldRadioButton> {
 
     private View rootView;
     private AppCompatTextView txtLabel;
     private RadioGroup radioGroup;
+    private FieldRadioButton model;
 
     public ViewLuckRadioGroup(Context context) {
         super(context);
@@ -42,18 +43,20 @@ public class ViewLuckRadioGroup extends LinearLayoutCompat {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                Toast.makeText(getContext(), "Position " + checkedId + " Clicked!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "Position " + checkedId + " Clicked!", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public void setLabel(String label) {
+    private void setLabel(String label) {
         txtLabel.setText(label);
     }
 
-    public void populateItems(List<String> options) {
+    private void populateItems(List<String> options) {
 
         int index = 0;
+
+        radioGroup.removeAllViews();
 
         for(String option : options){
             AppCompatRadioButton radioButton = new AppCompatRadioButton(getContext());
@@ -62,5 +65,18 @@ public class ViewLuckRadioGroup extends LinearLayoutCompat {
             radioGroup.addView(radioButton);
             index++;
         }
+    }
+
+    @Override
+    public void setModel(FieldRadioButton model) {
+        this.model = model;
+
+        setLabel(model.getLabel());
+        populateItems(model.getValue());
+    }
+
+    @Override
+    public FieldRadioButton getModel() {
+        return model;
     }
 }

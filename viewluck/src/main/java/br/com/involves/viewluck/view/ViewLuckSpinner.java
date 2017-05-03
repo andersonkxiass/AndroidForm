@@ -8,22 +8,21 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.Toast;
 
 import java.util.List;
 
 import br.com.involves.viewluck.R;
+import br.com.involves.viewluck.components.FieldSpinner;
 
 /**
  * Created by andersonk on 28/03/17.
  */
-public class ViewLuckSpinner extends LinearLayoutCompat {
+public class ViewLuckSpinner extends LinearLayoutCompat implements ViewLuck<FieldSpinner>{
 
-    private View rootView;
     private AppCompatSpinner spinner;
     private AppCompatTextView txtLabel;
     private ArrayAdapter<String> adapter;
+    private FieldSpinner model;
 
     public ViewLuckSpinner(Context context) {
         super(context);
@@ -49,7 +48,7 @@ public class ViewLuckSpinner extends LinearLayoutCompat {
 
     private void init(Context context) {
 
-        rootView = inflate(context, R.layout.viewluck_dropdownlist, this);
+        View rootView = inflate(context, R.layout.viewluck_dropdownlist, this);
         spinner = (AppCompatSpinner) rootView.findViewById(R.id.spinner);
         txtLabel = (AppCompatTextView) rootView.findViewById(R.id.txt_label);
 
@@ -66,11 +65,23 @@ public class ViewLuckSpinner extends LinearLayoutCompat {
         });
     }
 
-    public void setLabel(String label) {
+    private void setLabel(String label) {
         txtLabel.setText(label);
     }
 
-    public void populateItems(List<String> options) {
+    private void populateItems(List<String> options) {
+        adapter.clear();
         adapter.addAll(options);
+    }
+
+    public void setModel(FieldSpinner model) {
+        this.model = model;
+        setLabel(model.getLabel());
+        populateItems(model.getValue());
+    }
+
+    @Override
+    public FieldSpinner getModel() {
+        return model;
     }
 }

@@ -7,12 +7,12 @@ import android.util.AttributeSet;
  * Created by andersonk on 30/04/17.
  */
 
-public class FormViewSingle extends FormView {
-    public FormViewSingle(Context context) {
+public class FormLuckMulti extends FormLuck {
+    public FormLuckMulti(Context context) {
         super(context);
     }
 
-    public FormViewSingle(Context context, AttributeSet attrs) {
+    public FormLuckMulti(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 }

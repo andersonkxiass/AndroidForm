@@ -6,9 +6,8 @@ import android.support.v7.widget.LinearLayoutCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 
-import java.util.List;
-
 import br.com.involves.viewluck.R;
+import br.com.involves.viewluck.components.FieldCheckBox;
 import br.com.involves.viewluck.databinding.ViewluckCheckboxBinding;
 import br.com.involves.viewluck.viewmodel.MultiChoiceActions;
 import br.com.involves.viewluck.viewmodel.MultiChoiceAdapter;
@@ -17,9 +16,10 @@ import br.com.involves.viewluck.viewmodel.MultiChoiceViewModel;
 /**
  * Created by andersonk on 28/03/17.
  */
-public class ViewLuckMultipleChoice extends LinearLayoutCompat {
+public class ViewLuckMultipleChoice extends LinearLayoutCompat implements ViewLuck<FieldCheckBox> {
 
     private MultiChoiceViewModel viewModel;
+    private FieldCheckBox model;
 
     public ViewLuckMultipleChoice(Context context) {
         super(context);
@@ -43,11 +43,16 @@ public class ViewLuckMultipleChoice extends LinearLayoutCompat {
         binding.setAdapter(adapter);
     }
 
-    public void setLabel(String label) {
-        viewModel.setFieldLabel(label);
+    @Override
+    public FieldCheckBox getModel() {
+        return model;
     }
 
-    public void populateAdapter(List<String> options) {
-        viewModel.setFieldValue(options);
+    @Override
+    public void setModel(FieldCheckBox model) {
+        this.model = model;
+
+        viewModel.setFieldLabel(model.getLabel());
+        viewModel.setFieldValue(model.getValue());
     }
 }

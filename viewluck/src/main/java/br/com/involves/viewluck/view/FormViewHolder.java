@@ -2,9 +2,11 @@ package br.com.involves.viewluck.view;
 
 import android.support.v7.widget.RecyclerView;
 
+import java.util.List;
+
+import br.com.involves.viewluck.components.FieldView;
 import br.com.involves.viewluck.components.FormBuilder;
 import br.com.involves.viewluck.databinding.FormItemBinding;
-import br.com.involves.viewluck.model.FormModel;
 import br.com.involves.viewluck.viewmodel.FormItemViewModel;
 
 /**
@@ -22,13 +24,13 @@ public class FormViewHolder extends RecyclerView.ViewHolder{
         this.formBuilder = formBuilder;
     }
 
-    public void bindDataModel(FormModel formModel) {
+    public void bindDataModel(List<FieldView> formEntries) {
 
         if(binding.getVm() == null){
-            FormItemViewModel viewModel = new FormItemViewModel(formModel, formBuilder);
+            FormItemViewModel viewModel = new FormItemViewModel(formEntries, formBuilder);
             binding.setVm(viewModel);
         }else{
-            binding.getVm().setFormModel(formModel);
+            binding.getVm().setFormModel(formEntries);
         }
     }
 }

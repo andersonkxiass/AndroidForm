@@ -8,7 +8,7 @@ import java.util.List;
 
 import br.com.involves.viewluck.components.BuildType;
 import br.com.involves.viewluck.components.FormBuilder;
-import br.com.involves.viewluck.view.FormView;
+import br.com.involves.viewluck.view.FormLuck;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         objectList.add(new Object());
         objectList.add(new Object());
 
-        FormView formList = (FormView) findViewById(R.id.form_id);
+        FormLuck formList = (FormLuck) findViewById(R.id.form_id);
 
         FormBuilder builder = new FormBuilder();
         builder.setFormType(BuildType.MULTI);

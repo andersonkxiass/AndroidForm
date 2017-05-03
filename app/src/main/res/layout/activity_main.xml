@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     app:cardBackgroundColor="#f3f2f3">
 
-    <br.com.involves.viewluck.view.FormView
+    <br.com.involves.viewluck.view.FormLuck
         android:id="@+id/form_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
