@@ -9,13 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import br.com.involves.viewluck.components.CreateComponents;
 import br.com.involves.viewluck.components.FieldCheckBox;
 import br.com.involves.viewluck.components.FieldRadioButton;
 import br.com.involves.viewluck.components.FieldSpinner;
-import br.com.involves.viewluck.components.FieldType;
 import br.com.involves.viewluck.components.FieldView;
-import br.com.involves.viewluck.components.FormBuilder;
 
 /**
  * Created by andersonk on 16/03/17.
@@ -23,49 +20,21 @@ import br.com.involves.viewluck.components.FormBuilder;
 public class FormEntry extends LinearLayoutCompat {
 
     private List<ViewLuck> components = new ArrayList<>();
-    private FormBuilder formBuilder;
-    private CreateComponents createComponents;
     private List<FieldView> data = new ArrayList<>();
 
     public FormEntry(Context context) {
         super(context);
         setOrientation(VERTICAL);
-        init();
     }
 
     public FormEntry(Context context, AttributeSet attrs) {
         super(context, attrs);
         setOrientation(VERTICAL);
-        init();
     }
 
-    private void init() {
-        createComponents = new CreateComponents(this);
-    }
-
-    public void addBuilder(FormBuilder formBuilder) {
-
-        if (formBuilder != null) {
-
-            for (FieldView field : formBuilder.getFormEntries()) {
-
-                if (field.getFieldType() == FieldType.MULTIPLE_CHOICE) {
-
-                    ViewLuckMultipleChoice multipleChoice = createComponents.createMultipleChoiceView((FieldCheckBox) field);
-                    components.add(multipleChoice);
-
-                } else if (field.getFieldType() == FieldType.SINGLE_CHOICE) {
-
-                    ViewLuckRadioGroup radioGroup = createComponents.createSingleChoiceView((FieldRadioButton) field);
-                    components.add(radioGroup);
-
-                } else if (field.getFieldType() == FieldType.SPINNER) {
-
-                    ViewLuckSpinner spinner = createComponents.createSpinnerView((FieldSpinner) field);
-                    components.add(spinner);
-                }
-            }
-        }
+    public void addChildView(ViewLuck child){
+        addView((View)child);
+        components.add(child);
     }
 
     private void addInputTextView() {
@@ -78,16 +47,7 @@ public class FormEntry extends LinearLayoutCompat {
         return components;
     }
 
-    public FormBuilder getFormBuilder() {
-        return formBuilder;
-    }
-
-    public void setFormBuilder(FormBuilder formBuilder) {
-        this.formBuilder = formBuilder;
-        addBuilder(formBuilder);
-    }
-
-    public FieldView getComponentDataByTagId(UUID tagId) {
+    public FieldView getDataFromComponentByTagId(UUID tagId) {
 
         for (ViewLuck view : components) {
             boolean result = ((View) view).getTag().equals(tagId);

@@ -7,8 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 
-import java.util.List;
-
 import br.com.involves.viewluck.R;
 import br.com.involves.viewluck.components.FormBuilder;
 

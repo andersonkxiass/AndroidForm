@@ -7,6 +7,7 @@ import android.databinding.ObservableField;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.involves.viewluck.BR;
 import br.com.involves.viewluck.components.FieldCheckBox;
 import br.com.involves.viewluck.model.FieldOption;
 
@@ -34,12 +35,15 @@ public class MultiChoiceViewModel extends BaseViewModel<List<String>, FieldCheck
         }
 
         this.objectList.addAll(content);
+        
+        notifyPropertyChanged(BR.fieldValue);
     }
 
     @Override
     @Bindable
     public void setFieldLabel(String fieldLabel) {
         this.fieldLabel.set(fieldLabel);
+        notifyPropertyChanged(BR.fieldLabel);
     }
 
     @Override

@@ -2,10 +2,10 @@ package br.com.involves.viewluck.viewmodel;
 
 import android.databinding.BaseObservable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.involves.viewluck.components.FieldView;
-import br.com.involves.viewluck.components.FormBuilder;
 
 /**
  * Created by andersonk on 01/05/17.
@@ -13,16 +13,13 @@ import br.com.involves.viewluck.components.FormBuilder;
 
 public class FormItemViewModel extends BaseObservable {
 
-    private List<FieldView> formEntries;
-    private FormBuilder formBuilder;
+    private List<FieldView> formEntries = new ArrayList<>();
 
-    public FormItemViewModel(FormBuilder formBuilder) {
-        this.formBuilder = formBuilder;
+    public FormItemViewModel() {
     }
 
-    public FormItemViewModel(List<FieldView> formModel, FormBuilder formBuilder) {
+    public FormItemViewModel(List<FieldView> formModel) {
         this.formEntries = formModel;
-        this.formBuilder = formBuilder;
     }
 
     public List<FieldView> getFormModel() {
@@ -31,14 +28,6 @@ public class FormItemViewModel extends BaseObservable {
 
     public void setFormModel(List<FieldView> formModel) {
         this.formEntries = formModel;
-        //notifyChange();
-    }
-
-    public FormBuilder getFormBuilder() {
-        return formBuilder;
-    }
-
-    public void setFormBuilder(FormBuilder formBuilder) {
-        this.formBuilder = formBuilder;
+        notifyChange();
     }
 }

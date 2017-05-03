@@ -22,7 +22,7 @@ public class CreateComponents {
         ViewLuckMultipleChoice multipleChoice = new ViewLuckMultipleChoice(rootView.getContext());
         multipleChoice.setTag(fieldCheckBox.getTagId());
         multipleChoice.setModel(fieldCheckBox);
-        rootView.addView(multipleChoice);
+        rootView.addChildView(multipleChoice);
 
         return multipleChoice;
     }
@@ -32,7 +32,7 @@ public class CreateComponents {
         ViewLuckRadioGroup radioGroup = new ViewLuckRadioGroup(rootView.getContext());
         radioGroup.setTag(fieldRadioButton.getTagId());
         radioGroup.setModel(fieldRadioButton);
-        rootView.addView(radioGroup);
+        rootView.addChildView(radioGroup);
 
         return radioGroup;
     }
@@ -41,7 +41,7 @@ public class CreateComponents {
         ViewLuckSpinner spinner = new ViewLuckSpinner(rootView.getContext());
         spinner.setTag(fieldSpinner.getTagId());
         spinner.setModel(fieldSpinner);
-        rootView.addView(spinner);
+        rootView.addChildView(spinner);
 
         return spinner;
     }

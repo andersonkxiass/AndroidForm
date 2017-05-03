@@ -31,7 +31,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormViewHolder> {
         FormItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
                 R.layout.form_item, parent, false);
 
-        binding.setVm(new FormItemViewModel(formBuilder));
+        binding.setVm(new FormItemViewModel());
 
         return new FormViewHolder(binding, formBuilder);
     }
@@ -39,7 +39,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormViewHolder> {
     @Override
     public void onBindViewHolder(FormViewHolder holder, int position) {
         List<FieldView> entries = formBuilder.getFormEntries();
-        holder.bindDataModel(entries);
+        //holder.bindDataModel(entries);
     }
 
     @Override
