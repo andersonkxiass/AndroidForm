@@ -18,8 +18,8 @@ public class FieldSpinner extends FieldView<List<String>> {
         setFieldType(FieldType.SPINNER);
     }
 
-    public FieldSpinner(boolean enabled, boolean visibility, List<String> value) {
-        super(enabled, visibility, value);
+    public FieldSpinner(boolean enabled, boolean required, boolean visibility, List<String> value) {
+        super(enabled, required, visibility, value);
         this.setFieldType(FieldType.SPINNER);
     }
 

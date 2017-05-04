@@ -18,8 +18,8 @@ public class FieldRadioButton extends FieldView<List<String>> {
         setFieldType(FieldType.SINGLE_CHOICE);
     }
 
-    public FieldRadioButton(boolean enabled, boolean visibility, List<String> value) {
-        super(enabled, visibility, value);
+    public FieldRadioButton(boolean enabled, boolean required, boolean visibility, List<String> value) {
+        super(enabled, required, visibility, value);
         this.setFieldType(FieldType.SINGLE_CHOICE);
     }
 

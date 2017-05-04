@@ -17,8 +17,8 @@ public class FieldCheckBox extends FieldView<List<String>> {
         setFieldType(FieldType.MULTIPLE_CHOICE);
     }
 
-    public FieldCheckBox(boolean enabled, boolean visibility, List<String> value) {
-        super(enabled, visibility, value);
+    public FieldCheckBox(boolean enabled, boolean required, boolean visibility, List<String> value) {
+        super(enabled, required, visibility, value);
         this.setFieldType(FieldType.MULTIPLE_CHOICE);
     }
 }

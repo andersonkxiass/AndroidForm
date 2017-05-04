@@ -54,7 +54,6 @@ public class FormBuilder {
     }
 
     public void addInputTextField(String label) {
-        //formEntries.put(new BaseField(FormType.INPUT_TEXT, label), new FormModelSimple());
     }
 
     public void setFormType(BuildType buildType) {

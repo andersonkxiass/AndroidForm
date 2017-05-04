@@ -10,6 +10,7 @@ public abstract class FieldView<T> {
 
     private UUID tagId;
     private boolean enabled;
+    private boolean required;
     private boolean visibility;
     private T value;
     private String label;
@@ -18,8 +19,9 @@ public abstract class FieldView<T> {
     public FieldView() {
     }
 
-    public FieldView(boolean enabled, boolean visibility, T value) {
+    public FieldView(boolean enabled, boolean required, boolean visibility, T value) {
         this.enabled = enabled;
+        this.required =  required;
         this.visibility = visibility;
         this.value = value;
     }
@@ -38,6 +40,14 @@ public abstract class FieldView<T> {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public boolean isRequired() {
+        return required;
+    }
+
+    public void setRequired(boolean required) {
+        this.required = required;
     }
 
     public boolean isVisibility() {
