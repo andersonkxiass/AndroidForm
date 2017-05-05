@@ -22,6 +22,7 @@ public class CreateComponents {
         ViewLuckMultipleChoice multipleChoice = new ViewLuckMultipleChoice(rootView.getContext());
         multipleChoice.setTag(fieldCheckBox.getTagId());
         multipleChoice.setModel(fieldCheckBox);
+
         rootView.addChildView(multipleChoice);
 
         return multipleChoice;

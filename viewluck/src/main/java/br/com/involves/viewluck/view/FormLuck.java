@@ -9,6 +9,7 @@ import android.view.View;
 
 import br.com.involves.viewluck.R;
 import br.com.involves.viewluck.components.FormBuilder;
+import br.com.involves.viewluck.view.adapter.FormAdapter;
 
 /**
  * Created by andersonk on 29/03/17.

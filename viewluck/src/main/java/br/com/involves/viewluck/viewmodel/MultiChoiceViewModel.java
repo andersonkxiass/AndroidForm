@@ -1,42 +1,28 @@
 package br.com.involves.viewluck.viewmodel;
 
 import android.databinding.Bindable;
-import android.databinding.ObservableArrayList;
 import android.databinding.ObservableField;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v7.widget.RecyclerView;
 
 import br.com.involves.viewluck.BR;
 import br.com.involves.viewluck.components.FieldCheckBox;
-import br.com.involves.viewluck.model.FieldOption;
 
 /**
  * Created by andersonk on 30/04/17.
  */
 
-public class MultiChoiceViewModel extends BaseViewModel<List<String>, FieldCheckBox> {
+public class MultiChoiceViewModel extends BaseViewModel<FieldCheckBox> {
 
-    private final ObservableArrayList<String> objectList = new ObservableArrayList<>();
-    private final List<FieldOption> answer = new ArrayList<>();
-    private final ObservableField<String> fieldLabel = new ObservableField<>("");
+    private final ObservableField<String> fieldLabel = new ObservableField<>();
+    private final ObservableField<FieldCheckBox> fieldModel = new ObservableField<>();
+    private RecyclerView.LayoutManager layoutManager;
 
     public MultiChoiceViewModel() {
     }
 
     @Override
-    @Bindable
-    public void setFieldValue(List<String> content) {
-
-        this.objectList.clear();
-
-        for(String opt : content){
-            answer.add(new FieldOption(opt, false));
-        }
-
-        this.objectList.addAll(content);
-        
-        notifyPropertyChanged(BR.fieldValue);
+    public void setFieldValue(FieldCheckBox content) {
+        this.fieldModel.set(content);
     }
 
     @Override
@@ -51,20 +37,15 @@ public class MultiChoiceViewModel extends BaseViewModel<List<String>, FieldCheck
         return fieldLabel;
     }
 
-    @Override
-    public ObservableArrayList<String> getFieldValue() {
-        return objectList;
+    public RecyclerView.LayoutManager getLayoutManager() {
+        return layoutManager;
     }
 
-    public ObservableArrayList<String> getObjectList() {
-        return objectList;
+    public void setLayoutManager(RecyclerView.LayoutManager layoutManager) {
+        this.layoutManager = layoutManager;
     }
 
-    public List<FieldOption> getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(List<FieldOption> answer){
-        this.answer.addAll(answer);
+    public ObservableField<FieldCheckBox> getFieldModel() {
+        return fieldModel;
     }
 }

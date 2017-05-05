@@ -1,4 +1,4 @@
-package br.com.involves.viewluck.view;
+package br.com.involves.viewluck.view.adapter;
 
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +11,7 @@ import br.com.involves.viewluck.R;
 import br.com.involves.viewluck.components.FieldView;
 import br.com.involves.viewluck.components.FormBuilder;
 import br.com.involves.viewluck.databinding.FormItemBinding;
+import br.com.involves.viewluck.view.FormViewHolder;
 import br.com.involves.viewluck.viewmodel.FormItemViewModel;
 
 /**

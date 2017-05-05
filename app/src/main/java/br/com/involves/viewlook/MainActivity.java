@@ -33,11 +33,19 @@ public class MainActivity extends AppCompatActivity {
         FormLuck formList = (FormLuck) findViewById(R.id.form_id);
 
         FormBuilder builder = new FormBuilder();
-        builder.setFormType(BuildType.MULTI);
+        builder.setFormType(BuildType.SINGLE);
         builder.addMultiChoiceField("Checkbox Label", new String[]{"A", "B", "C"});
         builder.addSingleChoiceField("RadioGroup Label", new String[]{"1", "2", "3"});
         builder.addDropListField("Spinner Label", new String[]{"1", "2", "3"});
-        builder.forObjectList(objectList);
+
+        builder.addMultiChoiceField("Checkbox Label", new String[]{"A", "B", "C"});
+        builder.addSingleChoiceField("RadioGroup Label", new String[]{"1", "2", "3"});
+        builder.addDropListField("Spinner Label", new String[]{"1", "2", "3"});
+
+        builder.addMultiChoiceField("Checkbox Label", new String[]{"A", "B", "C"});
+        builder.addSingleChoiceField("RadioGroup Label", new String[]{"1", "2", "3"});
+        builder.addDropListField("Spinner Label", new String[]{"1", "2", "3"});
+        //builder.forObjectList(objectList);
 
         formList.buildWith(builder);
     }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="vm"
@@ -8,7 +9,7 @@
 
         <variable
             name="adapter"
-            type="br.com.involves.viewluck.viewmodel.MultiChoiceAdapter"/>
+            type="br.com.involves.viewluck.viewmodel.MultiChoiceBindAdapterVM"/>
 
         <variable
             name="actions"
@@ -29,14 +30,21 @@
             android:textSize="14sp"
             android:textStyle="bold" />
 
-        <br.com.involves.viewluck.view.NonScrollableGridView
-            android:id="@+id/gd_multiple_choice"
+        <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:choiceMode="multipleChoice"
-            app:options="@{vm.objectList}"
-            app:OnItemClickListener="@{(parent, view, position,id)->actions.onItemClick(view, position, vm.answer)}"
-            android:numColumns="auto_fit" />
+            app:options="@{vm.fieldModel}"
+            tools:listitem="@layout/viewluck_selection_row_multi"
+            app:layoutManager="@{vm.getLayoutManager()}"/>
+
+        <!--<br.com.involves.viewluck.view.NonScrollableGridView-->
+            <!--android:id="@+id/gd_multiple_choice"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:choiceMode="multipleChoice"-->
+            <!--app:options="@{vm.objectList}"-->
+            <!--app:OnItemClickListener="@{(parent, view, position,id)->actions.onItemClick(view, position, vm.answer)}"-->
+            <!--android:numColumns="auto_fit" />-->
 
     </android.support.v7.widget.LinearLayoutCompat>
 </layout>

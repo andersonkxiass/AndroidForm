@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
+import br.com.involves.viewluck.model.FieldOption;
+
 /**
  * Created by andersonk on 29/03/17.
  */
@@ -22,7 +24,14 @@ public class FormBuilder {
         FieldCheckBox fieldCheckBox = new FieldCheckBox();
         fieldCheckBox.setTagId(UUID.randomUUID());
         fieldCheckBox.setLabel(label);
-        fieldCheckBox.setValue(Arrays.asList(options));
+
+        List<FieldOption> fieldOptions = new ArrayList<>();
+
+        for( String opt : options){
+            fieldOptions.add(new FieldOption(opt, false));
+        }
+
+        fieldCheckBox.setValue(fieldOptions);
 
         formEntries.add(fieldCheckBox);
     }
