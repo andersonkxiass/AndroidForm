@@ -1,36 +1,38 @@
 package br.com.involves.viewluck.viewmodel;
 
+import android.databinding.BaseObservable;
 import android.databinding.ObservableField;
 import android.support.v7.widget.RecyclerView;
 
-import br.com.involves.viewluck.components.FieldCheckBox;
+import br.com.involves.viewluck.components.FieldRadioButton;
 
 /**
- * Created by andersonk on 30/04/17.
+ * Created by andersonk on 07/05/17.
  */
 
-public class MultiChoiceViewModel extends BaseViewModel<FieldCheckBox> {
+public class SingleChoiceVM extends BaseObservable {
 
     private final ObservableField<String> fieldLabel = new ObservableField<>();
-    private final ObservableField<FieldCheckBox> fieldModel = new ObservableField<>();
+    private final ObservableField<FieldRadioButton> fieldModel = new ObservableField<>();
     private RecyclerView.LayoutManager layoutManager;
 
-    public MultiChoiceViewModel() {
+    public SingleChoiceVM() {
     }
 
-    @Override
-    public void setFieldValue(FieldCheckBox content) {
-        this.fieldModel.set(content);
+    public ObservableField<String> getFieldLabel() {
+        return fieldLabel;
     }
 
-    @Override
     public void setFieldLabel(String fieldLabel) {
         this.fieldLabel.set(fieldLabel);
     }
 
-    @Override
-    public ObservableField getFieldLabel() {
-        return fieldLabel;
+    public FieldRadioButton getFieldModel() {
+        return fieldModel.get();
+    }
+
+    public void setFieldModel(FieldRadioButton fieldModel) {
+        this.fieldModel.set(fieldModel);
     }
 
     public RecyclerView.LayoutManager getLayoutManager() {
@@ -39,9 +41,5 @@ public class MultiChoiceViewModel extends BaseViewModel<FieldCheckBox> {
 
     public void setLayoutManager(RecyclerView.LayoutManager layoutManager) {
         this.layoutManager = layoutManager;
-    }
-
-    public ObservableField<FieldCheckBox> getFieldModel() {
-        return fieldModel;
     }
 }

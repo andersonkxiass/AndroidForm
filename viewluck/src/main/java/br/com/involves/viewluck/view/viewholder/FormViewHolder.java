@@ -1,4 +1,4 @@
-package br.com.involves.viewluck.view;
+package br.com.involves.viewluck.view.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 

@@ -11,7 +11,7 @@ import br.com.involves.viewluck.R;
 import br.com.involves.viewluck.components.FieldView;
 import br.com.involves.viewluck.components.FormBuilder;
 import br.com.involves.viewluck.databinding.FormItemBinding;
-import br.com.involves.viewluck.view.FormViewHolder;
+import br.com.involves.viewluck.view.viewholder.FormViewHolder;
 import br.com.involves.viewluck.viewmodel.FormItemViewModel;
 
 /**
@@ -40,7 +40,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormViewHolder> {
     @Override
     public void onBindViewHolder(FormViewHolder holder, int position) {
         List<FieldView> entries = formBuilder.getFormEntries();
-        //holder.bindDataModel(entries);
+        holder.bindDataModel(entries);
     }
 
     @Override

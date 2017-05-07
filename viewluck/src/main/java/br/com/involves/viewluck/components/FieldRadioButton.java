@@ -8,7 +8,7 @@ import br.com.involves.viewluck.model.FieldOption;
  * Created by andersonk on 03/05/17.
  */
 
-public class FieldRadioButton extends FieldView<List<String>> {
+public class FieldRadioButton extends FieldView<List<FieldOption>> {
 
     private FieldOption checked;
 
@@ -18,7 +18,7 @@ public class FieldRadioButton extends FieldView<List<String>> {
         setFieldType(FieldType.SINGLE_CHOICE);
     }
 
-    public FieldRadioButton(boolean enabled, boolean required, boolean visibility, List<String> value) {
+    public FieldRadioButton(boolean enabled, boolean required, boolean visibility, List<FieldOption> value) {
         super(enabled, required, visibility, value);
         this.setFieldType(FieldType.SINGLE_CHOICE);
     }

@@ -13,11 +13,12 @@ import java.util.List;
 
 import br.com.involves.viewluck.R;
 import br.com.involves.viewluck.components.FieldSpinner;
+import br.com.involves.viewluck.model.ViewLuck;
 
 /**
  * Created by andersonk on 28/03/17.
  */
-public class ViewLuckSpinner extends LinearLayoutCompat implements ViewLuck<FieldSpinner>{
+public class ViewLuckSpinner extends LinearLayoutCompat implements ViewLuck<FieldSpinner> {
 
     private AppCompatSpinner spinner;
     private AppCompatTextView txtLabel;
@@ -83,5 +84,9 @@ public class ViewLuckSpinner extends LinearLayoutCompat implements ViewLuck<Fiel
     @Override
     public FieldSpinner getModel() {
         return model;
+    }
+
+    public void updateModel(FieldSpinner model){
+
     }
 }

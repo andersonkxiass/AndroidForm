@@ -41,7 +41,14 @@ public class FormBuilder {
         FieldRadioButton fieldRadioButton = new FieldRadioButton();
         fieldRadioButton.setTagId(UUID.randomUUID());
         fieldRadioButton.setLabel(label);
-        fieldRadioButton.setValue(Arrays.asList(options));
+
+        List<FieldOption> fieldOptions = new ArrayList<>();
+
+        for( String opt : options){
+            fieldOptions.add(new FieldOption(opt, false));
+        }
+
+        fieldRadioButton.setValue(fieldOptions);
 
         formEntries.add(fieldRadioButton);
     }

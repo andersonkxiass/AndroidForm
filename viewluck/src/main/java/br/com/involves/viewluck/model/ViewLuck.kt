@@ -1,4 +1,4 @@
-package br.com.involves.viewluck.view
+package br.com.involves.viewluck.model
 
 /**
  * Created by pc on 01/04/17.

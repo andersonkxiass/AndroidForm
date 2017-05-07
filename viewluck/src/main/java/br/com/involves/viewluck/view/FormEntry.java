@@ -13,6 +13,7 @@ import br.com.involves.viewluck.components.FieldCheckBox;
 import br.com.involves.viewluck.components.FieldRadioButton;
 import br.com.involves.viewluck.components.FieldSpinner;
 import br.com.involves.viewluck.components.FieldView;
+import br.com.involves.viewluck.model.ViewLuck;
 
 /**
  * Created by andersonk on 16/03/17.
@@ -35,12 +36,6 @@ public class FormEntry extends LinearLayoutCompat {
     public void addChildView(ViewLuck child){
         addView((View)child);
         components.add(child);
-    }
-
-    private void addInputTextView() {
-    }
-
-    private void addDateView() {
     }
 
     public List<ViewLuck> getComponents() {
@@ -80,21 +75,22 @@ public class FormEntry extends LinearLayoutCompat {
     public void setData(List<FieldView> data) {
         this.data = data;
 
+        //updating view data and state
         for (FieldView fieldView : data) {
 
             View component = findComponentByTagId(fieldView.getTagId());
 
             if (component instanceof ViewLuckMultipleChoice) {
                 ViewLuckMultipleChoice multipleChoice = (ViewLuckMultipleChoice) component;
-                multipleChoice.setModel((FieldCheckBox) fieldView);
+                multipleChoice.updateModel((FieldCheckBox) fieldView);
 
             } else if (component instanceof ViewLuckRadioGroup) {
                 ViewLuckRadioGroup singleChoice = (ViewLuckRadioGroup) component;
-                singleChoice.setModel((FieldRadioButton) fieldView);
+                singleChoice.updateModel((FieldRadioButton) fieldView);
 
             } else if (component instanceof ViewLuckSpinner) {
                 ViewLuckSpinner spinner = (ViewLuckSpinner) component;
-                spinner.setModel((FieldSpinner) fieldView);
+                spinner.updateModel((FieldSpinner) fieldView);
             }
         }
     }

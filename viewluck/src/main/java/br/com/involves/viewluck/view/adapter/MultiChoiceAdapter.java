@@ -23,6 +23,11 @@ public class MultiChoiceAdapter extends RecyclerView.Adapter<ChoiceMultiVH> {
         this.checkBox = fieldCheckBox;
     }
 
+    public void updateModel(FieldCheckBox checkBox){
+        this.checkBox = checkBox;
+        notifyDataSetChanged();
+    }
+
     @Override
     public ChoiceMultiVH onCreateViewHolder(ViewGroup parent, int viewType) {
 

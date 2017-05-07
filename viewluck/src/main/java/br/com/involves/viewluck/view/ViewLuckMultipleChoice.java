@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import br.com.involves.viewluck.R;
 import br.com.involves.viewluck.components.FieldCheckBox;
 import br.com.involves.viewluck.databinding.ViewluckCheckboxBinding;
+import br.com.involves.viewluck.model.ViewLuck;
 import br.com.involves.viewluck.viewmodel.MultiChoiceActions;
 import br.com.involves.viewluck.viewmodel.MultiChoiceBindAdapterVM;
 import br.com.involves.viewluck.viewmodel.MultiChoiceViewModel;
@@ -57,5 +58,9 @@ public class ViewLuckMultipleChoice extends LinearLayoutCompat implements ViewLu
         binding.setVm(viewModel);
         binding.setActions(actions);
         binding.setAdapter(adapter);
+    }
+
+    public void updateModel(FieldCheckBox model){
+        viewModel.setFieldValue(model);
     }
 }
